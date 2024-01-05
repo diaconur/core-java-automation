@@ -1,0 +1,9 @@
+version: '2.2'
+
+services:
+  bonus:
+    image: razvan1987/microservice_bonus:v1
+    mem_limit: 350m
+    ports:
+      - 8080:8080
+    hostname: bonusservice
