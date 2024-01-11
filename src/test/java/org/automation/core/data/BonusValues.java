@@ -19,7 +19,7 @@ public enum BonusValues {
     BONUS5("NAME_BIRTHDAY", "HOLIDAY","2023-10-06", "2023-10-06"),
     BONUS6("CHILD_BIRTH", "HOLIDAY","2023-10-06", "2023-10-06"),
     BONUS7("HARDWARE", "LAPTOP","2024-01-05", "2024-01-05"),
-    BONUS8("HARDWARE", "HEADPHONES","2024-01-05", "2024-01-05");
+    BONUS8("HARDWARE", "HEADPHONES","2024-02-05", "2024-02-05");
 
     private final String bonusName;
     private final String bonusType;
