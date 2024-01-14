@@ -23,7 +23,7 @@ public class JavaStreams extends BaseSetup {
         log.info("Welcome entries are: {}", welcomeEntry);
         SoftAssertions softAssertions = new SoftAssertions();
         softAssertions.assertThat(welcomeEntry.getBonusName()).isEqualTo("WELCOME");
-        softAssertions.assertThat(welcomeEntry.getStartTime()).isEqualTo("2022-01-01");
+        softAssertions.assertThat(welcomeEntry.getStartTime()).isEqualTo("2020-03-01");
         softAssertions.assertAll();
 
     }
@@ -38,7 +38,7 @@ public class JavaStreams extends BaseSetup {
         SoftAssertions softAssertions = new SoftAssertions();
         softAssertions.assertThat(welcomeEntries.size()).isEqualTo(1);
         softAssertions.assertThat(welcomeEntries.get(0).getBonusName()).isEqualTo("WELCOME");
-        softAssertions.assertThat(welcomeEntries.get(0).getStartTime()).isEqualTo("2022-01-01");
+        softAssertions.assertThat(welcomeEntries.get(0).getStartTime()).isEqualTo("2020-03-01");
         softAssertions.assertAll();
     }
 
@@ -63,10 +63,14 @@ public class JavaStreams extends BaseSetup {
     public void checkHardwareStartTime() {
 
         // In case you have duplicate keys you will receive an exception
-        //  java.lang.IllegalStateException: Duplicate key ANUAL_RAISE (attempted merging values 2021-01-01 and 2022-01-01)
+        // For example filtering by key ANUAL_RAISE :
+        //  java.lang.IllegalStateException:
+        //  Duplicate key ANUAL_RAISE (attempted merging values 2021-01-01 and 2022-01-01)
 
-        Map bonusesMap = bonusList.stream().filter(val -> val.getBonusName().equals("HARDWARE"))
-                .collect(Collectors.toMap(val -> val.getBonusType(), BonusResponse::getStartTime));
+        Map bonusesMap = bonusList.stream()
+                .filter(val -> val.getBonusName().equals("HARDWARE"))
+                .collect(Collectors.toMap(val -> val.getBonusType(),
+                        BonusResponse::getStartTime));
 
 
         log.info("Bonuses received are: " + bonusesMap);

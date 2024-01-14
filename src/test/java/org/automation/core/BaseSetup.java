@@ -54,12 +54,9 @@ public class BaseSetup {
 
     @AfterClass
     public void deleteAllBonuses() {
-        Response response = RestAssured.given(requestSpecification)
-                .get("/getAllBonuses");
-        List<BonusResponse> bonusesList = response.jsonPath().getList("$", BonusResponse.class);
 
-        IntStream.range(bonusesList.get(0).getId(),
-                        bonusesList.get(bonusesList.size() - 1).getId() + 1)
+        IntStream.range(bonusList.get(0).getId(),
+                        bonusList.get(bonusList.size() - 1).getId() + 1)
                 .forEach(nr -> {
                     try {
                         RestAssured.given(requestSpecification)
@@ -70,6 +67,6 @@ public class BaseSetup {
                     }
 
                 });
-        log.info("Deleted entries: {}", bonusesList.size());
+        log.info("Deleted entries: {}", bonusList.size());
     }
 }
